@@ -16,8 +16,13 @@ window.Vue = require('vue');
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
+import {ServerTable, ClientTable, Event} from 'vue-tables-2';
+import VModal from 'vue-js-modal'
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.use(ClientTable, {});
+Vue.use(VModal, { dialog: true })
+
+Vue.component('users', require('./components/users/Users.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 
