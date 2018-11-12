@@ -1,0 +1,22 @@
+header,
+main,
+footer {
+  padding-left: 150px;
+}
+
+.sidenav-trigger {
+  display: none;
+}
+
+@media only screen and (max-width: 992px) {
+  header,
+  main,
+  footer {
+    padding-left: 0;
+  }
+
+  .sidenav-trigger {
+    display: inline-block;
+  }
+}
+
