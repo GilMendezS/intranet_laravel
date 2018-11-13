@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "vue-js-modal": "^1.3.26",
+        "vue-select": "^2.5.1",
         "vue-tables-2": "^1.4.70"
     }
 }

@@ -28,30 +28,7 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(CreateUserRequest $request)
-    {
-        $user = new User();
-        $user->name = $request->name;
-        $user->lastname = $request->lastname ?? '';
-        $user->phone = $request->phone ?? '';
-        $user->email  = $request->email;
-        if($request->password){
-            $user->password = bcrypt($request->password);
-        }
-        try {
-            $user->save();
-            return response()->json(['success' => TRUE, 'message' => 'User created.'], 200);
-        }
-        catch(\Exception $e){
-            return response()->json(['success' => FALSE, 'message' => 'Error creating the user.'], 200);
-        }
-    }
+    
 
     /**
      * Display the specified resource.

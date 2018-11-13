@@ -18,11 +18,14 @@ window.Vue = require('vue');
  */
 import {ServerTable, ClientTable, Event} from 'vue-tables-2';
 import VModal from 'vue-js-modal'
+import vSelect from 'vue-select'
 
 Vue.use(ClientTable, {});
 Vue.use(VModal, { dialog: true })
 
+Vue.component('v-select',vSelect)
 Vue.component('users', require('./components/users/Users.vue'));
+Vue.component('add-user', require('./components/users/CreateUser.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\CreateUserRequest;
 
 class UserController extends Controller
 {
@@ -25,9 +27,24 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->name;
+        $user->lastname = $request->lastname ?? '';
+        $user->phone = $request->phone ?? '';
+        $user->email  = $request->email;
+        if($request->password){
+            $user->password = bcrypt($request->password);
+        }
+        try {
+            $user->save();
+            $user->assignRole(Role::find($request->role));
+            return response()->json(['success' => TRUE, 'message' => 'User created.'], 200);
+        }
+        catch(\Exception $e){
+            return response()->json(['success' => FALSE, 'message' => 'Error creating the user.'], 200);
+        }
     }
 
     /**

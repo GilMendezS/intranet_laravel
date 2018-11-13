@@ -12,6 +12,7 @@
             </div>
         </v-client-table>    
         <v-dialog/>
+        <add-user></add-user>
     </div>
     
 </template>
